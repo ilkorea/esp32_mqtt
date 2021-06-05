@@ -8,7 +8,7 @@ const char* ssid     = "TRITONASETUP";
 const char* password = "20120501!!";
 
 
-#define THING_NAME "TritonaPublic"
+#define THING_NAME "FStest"
 #define MQTT_PACKET_SIZE  1024
 
 void MQTTPublish(const char *topic, char *payload);
@@ -70,21 +70,21 @@ SSLClientParameters mTLS = SSLClientParameters::fromPEM(my_cert, sizeof my_cert,
 
 const char* mqttServer = "a2wzjwo14dtw6n-ats.iot.ap-northeast-2.amazonaws.com";
 //const char* mqttServer = "arn:aws:iot:ap-northeast-2:901349641272:thing/TritonaPublic";
-const char publishShadowUpdate[] = "$aws/things/FStest/shadow/name/FSShadow/update";
-const char publishShadowGet[] = "$aws/things/FStest/shadow/name/FSShadow/get";
-const char publishShadowGet1[] = "$aws/things/FStest/shadow/name/FSShadow/get/accepted";
-const char publishShadowGet2[] = "$aws/things/FStest/shadow/name/FSShadow/get/rejected";
+const char publishShadowUpdate[] = "$aws/things/"THING_NAME"/shadow/name/FSShadow/update";
+const char publishShadowGet[] = "$aws/things/"THING_NAME"/shadow/name/FSShadow/get";
+const char publishShadowGet1[] = "$aws/things/"THING_NAME"/shadow/name/FSShadow/get/accepted";
+const char publishShadowGet2[] = "$aws/things/"THING_NAME"/shadow/name/FSShadow/get/rejected";
 char publishPayload[MQTT_PACKET_SIZE];
 char publishPayload1[MQTT_PACKET_SIZE];
 
 char *subscribeTopic[6] =
 {
-  "$aws/things/FStest/shadow/name/FSShadow/update/accepted",
-  "$aws/things/FStest/shadow/name/FSShadow/update/rejected",
-  "$aws/things/FStest/shadow/name/FSShadow/update/delta",
-  "$aws/things/FStest/shadow/name/FSShadow/update/documents",
-  "$aws/things/FStest/shadow/name/FSShadow/get/accepted",
-  "$aws/things/FStest/shadow/name/FSShadow/get/rejected"
+  "$aws/things/"THING_NAME"/shadow/name/FSShadow/update/accepted",
+  "$aws/things/"THING_NAME"/shadow/name/FSShadow/update/rejected",
+  "$aws/things/"THING_NAME"/shadow/name/FSShadow/update/delta",
+  "$aws/things/"THING_NAME"/shadow/name/FSShadow/update/documents",
+  "$aws/things/"THING_NAME"/shadow/name/FSShadow/get/accepted",
+  "$aws/things/"THING_NAME"/shadow/name/FSShadow/get/rejected"
 };
 
 void callback(char* topic, byte* payload, unsigned int length) 
